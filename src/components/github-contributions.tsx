@@ -68,7 +68,7 @@ export const GitHubContributions = ({ username, delay = 0 }: GitHubContributions
 
         const data = await response.json();
         const weeks = data.data?.user?.contributionsCollection?.contributionCalendar?.weeks || [];
-        
+
         const allContributions: ContributionDay[] = [];
         weeks.forEach((week: any) => {
           week.contributionDays.forEach((day: any) => {
@@ -106,7 +106,7 @@ export const GitHubContributions = ({ username, delay = 0 }: GitHubContributions
   const renderContributionGraph = () => {
     const days = contributions.slice(-365); // Last 365 days
     const weeks = [];
-    
+
     for (let i = 0; i < days.length; i += 7) {
       weeks.push(days.slice(i, i + 7));
     }
@@ -138,14 +138,14 @@ export const GitHubContributions = ({ username, delay = 0 }: GitHubContributions
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-5xl">
-              My GitHub Activity.
+              my github activity.
             </h2>
             <p className="text-muted-foreground text-base md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Here&apos;s my contribution graph showing my coding activity over the past year.
             </p>
           </div>
         </div>
-        
+
         {/* Graph container - different behavior for mobile vs desktop */}
         <div className="flex justify-center">
           {/* Mobile: Fixed width container with scrollable graph */}

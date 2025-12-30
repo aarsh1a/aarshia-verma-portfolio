@@ -318,7 +318,7 @@ export default function ProjectsPage() {
                         style={{ left: 1500 - 150, top: 1000 - 60, width: 300 }}
                     >
                         <h1 className="text-4xl font-bold text-white mb-2">projects</h1>
-                        <p className="text-muted-foreground">explore my work</p>
+                        <p className="text-muted-foreground">building my digital footprint</p>
                     </div>
 
                     {/* Connection lines */}

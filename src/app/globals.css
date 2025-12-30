@@ -82,15 +82,28 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Hybrid Typography: Serif headings, sans-serif body */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif), ui-serif, Georgia, serif;
+  }
 }
 
 @layer utilities {
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
   .scrollbar-hide {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
   }
 
   /* Consistent section spacing utilities */
@@ -248,4 +261,39 @@ code[data-line-numbers-max-digits="3"]>[data-line]::before {
 
 .page-transition {
   animation: fadeIn 0.4s ease-out;
+}
+
+/* Ceramic Tile Navigation - Image-based tiles with desaturation */
+.ceramic-tile-img {
+  filter: grayscale(70%) brightness(0.7) contrast(0.85);
+  opacity: 0.6;
+  box-shadow: none;
+}
+
+.ceramic-tile-img-hover,
+.ceramic-tile-img:hover {
+  filter: grayscale(40%) brightness(0.9) contrast(0.95);
+  opacity: 1;
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.15),
+    0 0 40px rgba(255, 255, 255, 0.08);
+}
+
+.ceramic-tile-img:focus-visible {
+  filter: grayscale(40%) brightness(0.9) contrast(0.95);
+  opacity: 1;
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.3),
+    0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Active state - when user scrolls to that section */
+.ceramic-tile-img-active {
+  filter: grayscale(30%) brightness(1) contrast(1);
+  opacity: 1;
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.35),
+    0 0 40px rgba(255, 255, 255, 0.2),
+    0 4px 8px rgba(0, 0, 0, 0.3);
 }

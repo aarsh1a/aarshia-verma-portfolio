@@ -5,11 +5,17 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
+import { Merriweather, Inter } from "next/font/google";
 import "./globals.css";
 import "leaflet/dist/leaflet.css";
 
-const fontSans = FontSans({
+const fontSerif = Merriweather({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-serif",
+});
+
+const fontSans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
 });
@@ -60,7 +66,8 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
+          fontSans.variable,
+          fontSerif.variable
         )}
       >
         <ThemeProvider
