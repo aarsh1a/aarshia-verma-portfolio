@@ -67,7 +67,7 @@ export function PostItSection({ delay = 0 }: { delay?: number }) {
                         key={note.title}
                         note={note}
                         index={index}
-                        delay={delay + 0.1 * index}
+                        delay={0.05 * index}
                     />
                 ))}
             </div>
@@ -86,9 +86,8 @@ function PostIt({
 }) {
     return (
         <motion.div
-            initial={{ opacity: 0, y: 20, rotate: 0 }}
-            animate={{ opacity: 1, y: 0, rotate: note.rotation || 0 }}
-            transition={{ delay, duration: 0.5, ease: "easeOut" }}
+            initial={{ rotate: note.rotation || 0 }}
+            animate={{ rotate: note.rotation || 0 }}
             whileHover={{
                 y: -8,
                 boxShadow: "0 12px 30px rgba(0,0,0,0.25)",

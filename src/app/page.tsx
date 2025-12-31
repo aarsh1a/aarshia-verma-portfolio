@@ -24,7 +24,7 @@ export default function Page() {
         <section id="work" className="mb-section-lg">
           <div className="space-y-12">
             <BlurFade delay={BLUR_FADE_DELAY * 17}>
-              <h2 className="text-xl font-bold">technical experience</h2>
+              <h2 className="text-xl font-bold">experience</h2>
             </BlurFade>
             <div className="space-y-0">
               {DATA.technicalExperience.map((work, id) => (
@@ -50,19 +50,19 @@ export default function Page() {
           <ChessStack delay={BLUR_FADE_DELAY * 21} />
         </section>
 
-        <section id="about-me" className="mb-section-lg">
-          <div className="space-y-8">
+        <section id="about-me" className="mb-8">
+          <div className="space-y-4">
             <BlurFade delay={BLUR_FADE_DELAY * 22}>
               <p className="text-muted-foreground md:text-lg leading-relaxed text-center max-w-3xl mx-auto">
-                i&apos;m particularly drawn to areas where computation intersects with analysis, modeling, or research, and i tend to use projects as a way to explore concepts more deeply rather than as finished endpoints.
+                i&apos;m particularly drawn to areas where computation intersects with analysis, modeling, or research, and i tend to use projects as a way to explore concepts rather than just as finished endpoints.
               </p>
             </BlurFade>
             <PostItSection delay={BLUR_FADE_DELAY * 23} />
           </div>
         </section>
 
-        <section id="projects" className="mb-section-lg">
-          <div className="space-y-content-lg">
+        <section id="projects" className="mb-8">
+          <div className="space-y-4">
             <BlurFade delay={BLUR_FADE_DELAY * 25}>
               <p className="text-muted-foreground md:text-lg leading-relaxed text-center max-w-3xl mx-auto">
                 notes.

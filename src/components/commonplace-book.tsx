@@ -291,11 +291,26 @@ export const CommonplaceBook = ({ delay = 0 }: CommonplaceBookProps) => {
                             {/* In Progress */}
                             <div className="mt-8 pl-4 border-l border-white/10">
                                 <h3 className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/40 mb-3">
+                                    Research Notes
+                                </h3>
+                                <div className="flex items-center gap-2 text-sm text-white/60 mb-2 cursor-pointer hover:text-white/80 transition-colors">
+                                    <FourPointStar className="w-2 h-2 text-white/40" />
+                                    <span>k8sgpt for 5g telco clusters</span>
+                                </div>
+                            </div>
+
+                            {/* Building */}
+                            <div className="mt-6 pl-4 border-l border-white/10">
+                                <h3 className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/40 mb-3">
                                     Building
                                 </h3>
                                 {DATA.research.inProgress.map((work) => (
                                     <div key={work.title} className="flex items-center gap-2 text-sm text-white/60">
-                                        <motion.span animate={{ x: [0, 3, 0] }} transition={{ duration: 2, repeat: Infinity }}>→</motion.span>
+                                        <motion.span
+                                            animate={{ opacity: [0.4, 1, 0.4] }}
+                                            transition={{ duration: 2, repeat: Infinity }}
+                                            className="w-1.5 h-1.5 rounded-full bg-green-400"
+                                        />
                                         <span>{work.title}</span>
                                         <span className="text-[9px] text-white/25 uppercase">{work.venue}</span>
                                     </div>
@@ -310,65 +325,66 @@ export const CommonplaceBook = ({ delay = 0 }: CommonplaceBookProps) => {
                             transition={{ delay: delay + 0.35, duration: 0.5 }}
                             className="md:col-span-7"
                         >
-                            {/* Featured */}
+                            {/* Featured - k8sgpt */}
                             <div
-                                className="p-6 rounded-xl mb-8"
+                                className="p-4 rounded-xl mb-8"
                                 style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)", border: "1px solid rgba(255,255,255,0.06)" }}
                             >
                                 <div className="flex items-center gap-2 mb-4">
                                     <FourPointStar className="w-2 h-2 text-white/40" />
-                                    <span className="text-[9px] text-white/30 uppercase tracking-[0.2em]">Featured</span>
+                                    <span className="text-[9px] text-white/30 uppercase tracking-[0.2em]">research note / technical whitepaper</span>
                                 </div>
 
                                 <h4 className="font-serif text-xl sm:text-2xl font-bold text-white/90 leading-tight">
-                                    {DATA.research.published[1]?.title}
+                                    k8sgpt for 5g telco systems
                                 </h4>
 
                                 <p className="text-sm text-white/50 mt-4 leading-relaxed">
-                                    {DATA.research.published[1]?.abstract}
+                                    a comparison of existing kubernetes debugging tools showed strong general performance but limited relevance for 5g telco deployments. consequently, a retrieval-augmented generation (rag) architecture was adopted, combining a deepseek llm with telco specifications as an external knowledge source.
                                 </p>
+
+                                <div className="mt-5">
+                                    <span className="text-[9px] text-white/30 uppercase tracking-[0.2em]">methods</span>
+                                    <div className="flex flex-wrap gap-2 mt-2">
+                                        <span className="text-xs text-white/50 px-2 py-1 border border-white/10 rounded">rag (langchain + chromadb)</span>
+                                        <span className="text-xs text-white/50 px-2 py-1 border border-white/10 rounded">deepseek llm</span>
+                                        <span className="text-xs text-white/50 px-2 py-1 border border-white/10 rounded">telco specs as retrieval corpus</span>
+                                    </div>
+                                </div>
 
                                 <div className="flex items-center justify-between mt-6 pt-4 border-t border-white/5">
                                     <span className="text-[10px] text-white/30 uppercase tracking-wider">
-                                        {DATA.research.published[1]?.venue} • {DATA.research.published[1]?.year}
+                                        linux foundation • 2024
                                     </span>
-                                    <a
-                                        href={DATA.research.published[1]?.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-[10px] text-white/40 hover:text-white transition-colors flex items-center gap-1"
-                                    >
-                                        Read Paper <ExternalLink size={9} />
-                                    </a>
+                                    <button className="text-[10px] text-white/40 hover:text-white transition-colors flex items-center gap-1">
+                                        read note →
+                                    </button>
                                 </div>
                             </div>
 
-                            {/* Interests & Aspirations side by side */}
-                            <div className="grid grid-cols-2 gap-6">
-                                <div>
-                                    <h3 className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/40 mb-4">
-                                        Interests
-                                    </h3>
-                                    <ul className="space-y-2">
-                                        {DATA.research.interests.map((interest) => (
-                                            <li key={interest} className="text-sm text-white/55 hover:text-white/75 transition-colors">
-                                                • {interest}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h3 className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/40 mb-4">
-                                        Aspirations
-                                    </h3>
-                                    <ul className="space-y-2">
-                                        {DATA.research.aspirations.map((item) => (
-                                            <li key={item} className="text-sm text-white/55">
-                                                ↳ {item}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
+                            {/* Current Focus */}
+                            <div>
+                                <h3 className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/40 mb-4">
+                                    Current Focus
+                                </h3>
+                                <ul className="space-y-2">
+                                    <li className="text-sm text-white/55 flex items-start gap-2">
+                                        <FourPointStar className="w-2 h-2 text-white/40 mt-1.5 flex-shrink-0" />
+                                        <span>ai/ml for scientific and systems-driven research</span>
+                                    </li>
+                                    <li className="text-sm text-white/55 flex items-start gap-2">
+                                        <FourPointStar className="w-2 h-2 text-white/40 mt-1.5 flex-shrink-0" />
+                                        <span>retrieval-augmented systems - grounding models in domain knowledge (infra docs, real data)</span>
+                                    </li>
+                                    <li className="text-sm text-white/55 flex items-start gap-2">
+                                        <FourPointStar className="w-2 h-2 text-white/40 mt-1.5 flex-shrink-0" />
+                                        <span>space exploration and long-horizon research</span>
+                                    </li>
+                                    <li className="text-sm text-white/55 flex items-start gap-2">
+                                        <FourPointStar className="w-2 h-2 text-white/40 mt-1.5 flex-shrink-0" />
+                                        <span>generative models as tools</span>
+                                    </li>
+                                </ul>
                             </div>
                         </motion.div>
                     </div>

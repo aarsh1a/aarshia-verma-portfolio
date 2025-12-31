@@ -24,7 +24,7 @@ const pieces: Record<string, ChessPiece> = {
         name: "pawn",
         role: "languages",
         hint: "core syntax, the building blocks",
-        description: "these are the languages i actually write code in. python for most things, java and c when i need more control, dart for mobile stuff, and go when i want something fast and clean.",
+        description: "these are the languages i actually write code in. python for most things, java and c when i need more control, dart for mobile apps while currently learning go.",
         items: ["python", "java", "c", "dart", "go"],
         relatedProjects: ["backend services", "cli tools", "cross-platform apps"],
     },
@@ -33,7 +33,7 @@ const pieces: Record<string, ChessPiece> = {
         name: "knight",
         role: "frameworks",
         hint: "non-linear moves, rapid prototyping",
-        description: "i use these to build things quickly. flask and fastapi for apis, streamlit when i need a quick ui for ml stuff, flutter for mobile apps.",
+        description: "i use these to build things quickly. flask and fastapi for apis, streamlit when i need a quick ui for usage, flutter for mobile apps.",
         items: ["flask", "fastapi", "streamlit", "flutter", "sqlite", "git", "rest apis", "tensorflow"],
         relatedProjects: ["rest microservices", "ml dashboards", "mobile apps"],
     },
@@ -51,7 +51,7 @@ const pieces: Record<string, ChessPiece> = {
         name: "rook",
         role: "systems",
         hint: "straight lines, infrastructure at scale",
-        description: "containers, cloud, and infrastructure. i use docker and kubernetes for deployments, ollama for local inference, and gcp/aws for cloud stuff.",
+        description: "containers, cloud, and infrastructure. i use docker and kubernetes for deployments, ollama for local inference, and gcp/aws for cloud.",
         items: ["unix/linux", "docker", "kubernetes", "langchain", "ollama", "google cloud", "aws"],
         relatedProjects: ["ci/cd pipelines", "k8s deployments", "cloud-native apps"],
     },
@@ -101,8 +101,8 @@ export const ChessStack = ({ delay = 0 }: ChessStackProps) => {
     return (
         <motion.div
             ref={ref}
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ delay: delay, duration: 0.6, ease: "easeOut" }}
             className="w-full"
         >
@@ -275,7 +275,7 @@ export const ChessStack = ({ delay = 0 }: ChessStackProps) => {
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -20 }}
-                            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                            transition={{ duration: 0.1, ease: [0.2, 0, 0.1, 1] }}
                             className="w-full max-w-[320px] lg:w-[320px]"
                             style={{ height: "380px" }}
                         >
