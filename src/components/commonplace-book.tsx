@@ -360,7 +360,7 @@ export const CommonplaceBook = ({ delay = 0 }: CommonplaceBookProps) => {
 
                                 <div className="flex items-center justify-between mt-6 pt-4 border-t border-white/5">
                                     <span className="text-[10px] text-white/30 uppercase tracking-wider">
-                                        linux foundation • 2024
+                                        linux foundation • 2025
                                     </span>
                                     <a
                                         href="https://drive.google.com/file/d/1LoUkmNktbiol1c3wRKMgRmddc-PJXcPZ/view?usp=sharing"

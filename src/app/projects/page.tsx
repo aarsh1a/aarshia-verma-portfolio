@@ -156,18 +156,34 @@ export default function ProjectsPage() {
     const [scale, setScale] = useState(1);
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-    // Generate scattered positions for projects
+    // Generate truly scattered positions - random but visible
     const projectPositions = useCallback(() => {
         const positions: Position[] = [];
         const centerX = 1500;
         const centerY = 1000;
 
+        // Random scattered positions - closer to center, still organic
+        const randomPositions = [
+            { x: -420, y: -280 },   // upper left
+            { x: 350, y: -240 },    // upper right
+            { x: -380, y: 220 },    // lower left
+            { x: 400, y: 100 },     // right, lower
+            { x: 80, y: -350 },     // top center
+            { x: -400, y: 50 },     // left middle
+            { x: 380, y: -120 },    // right, upper
+            { x: -120, y: 300 },    // bottom left
+            { x: 420, y: -240 },    // upper right area
+            { x: -280, y: -200 },   // upper left, closer
+        ];
+
         DATA.projects.forEach((_, index) => {
-            const angle = (index / DATA.projects.length) * 2 * Math.PI;
-            const radius = 300 + (index % 2) * 200;
+            const pos = randomPositions[index % randomPositions.length];
+            // Add more jitter for truly random feel
+            const jitterX = ((index * 73 + 17) % 100) - 50;
+            const jitterY = ((index * 91 + 23) % 80) - 40;
             positions.push({
-                x: centerX + Math.cos(angle) * radius - 160,
-                y: centerY + Math.sin(angle) * radius - 100,
+                x: centerX + pos.x + jitterX - 160,
+                y: centerY + pos.y + jitterY - 100,
             });
         });
 
@@ -321,23 +337,61 @@ export default function ProjectsPage() {
                         <p className="text-muted-foreground">building my digital footprint</p>
                     </div>
 
-                    {/* Connection lines */}
+                    {/* Connection lines - separate dotted line for each project */}
                     <svg
                         className="absolute pointer-events-none"
                         style={{ left: 0, top: 0, width: 3000, height: 2000 }}
                     >
-                        {positions.map((pos, index) => (
-                            <line
-                                key={index}
-                                x1={1500}
-                                y1={1000}
-                                x2={pos.x + 160}
-                                y2={pos.y + 100}
-                                stroke="rgba(255,255,255,0.1)"
-                                strokeWidth="1"
-                                strokeDasharray="5,5"
-                            />
-                        ))}
+                        {positions.map((pos, index) => {
+                            const cardCenterX = pos.x + 160;
+                            const cardCenterY = pos.y + 100;
+                            const textCenterX = 1500;
+                            const textCenterY = 1000;
+                            const textBoxWidth = 300;
+                            const textBoxHeight = 80;
+
+                            // Determine which edge of text box to start from based on card position
+                            let startX = textCenterX;
+                            let startY = textCenterY;
+
+                            // Exit from different edges based on where the card is
+                            if (cardCenterY < textCenterY - textBoxHeight / 2) {
+                                // Card is above - exit from top
+                                startY = textCenterY - textBoxHeight / 2;
+                                startX = textCenterX + ((index % 5) - 2) * 40; // Spread along top edge
+                            } else if (cardCenterY > textCenterY + textBoxHeight / 2) {
+                                // Card is below - exit from bottom
+                                startY = textCenterY + textBoxHeight / 2;
+                                startX = textCenterX + ((index % 5) - 2) * 40;
+                            } else if (cardCenterX < textCenterX) {
+                                // Card is left - exit from left
+                                startX = textCenterX - textBoxWidth / 2;
+                                startY = textCenterY + ((index % 3) - 1) * 20;
+                            } else {
+                                // Card is right - exit from right
+                                startX = textCenterX + textBoxWidth / 2;
+                                startY = textCenterY + ((index % 3) - 1) * 20;
+                            }
+
+                            // L-shaped path: vertical then horizontal or vice versa
+                            // Choose direction based on relative position
+                            const goVerticalFirst = Math.abs(cardCenterY - startY) > Math.abs(cardCenterX - startX);
+
+                            const path = goVerticalFirst
+                                ? `M ${startX} ${startY} V ${cardCenterY} H ${cardCenterX}`
+                                : `M ${startX} ${startY} H ${cardCenterX} V ${cardCenterY}`;
+
+                            return (
+                                <path
+                                    key={index}
+                                    d={path}
+                                    stroke="rgba(255,255,255,0.15)"
+                                    strokeWidth="1"
+                                    strokeDasharray="4,6"
+                                    fill="none"
+                                />
+                            );
+                        })}
                     </svg>
 
                     {/* Project cards */}

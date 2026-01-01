@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import BlurFade from "@/components/magicui/blur-fade";
-import { X, Download, Send, Mail } from "lucide-react";
+import { X, Download, Send, Mail, Star } from "lucide-react";
 import { useForm, ValidationError } from "@formspree/react";
 
 const TILES = [
@@ -359,8 +359,8 @@ function EnvelopePopup({ onClose }: { onClose: () => void }) {
                 initial={{
                     opacity: 0,
                     scale: 0,
-                    x: -80,
-                    y: "0%",
+                    x: -20,
+                    y: "-30%",
                 }}
                 animate={{
                     opacity: 1,
@@ -371,46 +371,47 @@ function EnvelopePopup({ onClose }: { onClose: () => void }) {
                 exit={{
                     opacity: 0,
                     scale: 0,
-                    x: -80,
-                    y: "0%",
+                    x: -20,
+                    y: "-30%",
                 }}
                 transition={{
-                    duration: 0.5,
+                    duration: 0.4,
                     ease: [0.4, 0, 0.2, 1],
                 }}
                 className="absolute left-full top-0 ml-20 z-[51]"
+                style={{ transformOrigin: "left center" }}
             >
                 {/* Curved line connectors from tile to popup - top and bottom */}
                 <svg
                     className="absolute right-full top-0 w-20 h-full overflow-visible pointer-events-none"
-                    viewBox="0 0 80 200"
+                    viewBox="0 0 16 200"
                     fill="none"
                     preserveAspectRatio="none"
                     style={{ marginRight: "-2px" }}
                 >
                     {/* Top curved line */}
                     <motion.path
-                        d="M0 100 Q 30 100 50 50 Q 70 0 80 0"
+                        d="M0 100 Q 8 100 12 50 Q 14 0 16 0"
                         stroke="rgba(255, 255, 255, 0.2)"
-                        strokeWidth="1.5"
+                        strokeWidth="0.5"
                         strokeLinecap="round"
                         fill="none"
                         initial={{ pathLength: 0, opacity: 0 }}
                         animate={{ pathLength: 1, opacity: 1 }}
                         exit={{ pathLength: 0, opacity: 0 }}
-                        transition={{ duration: 0.5, ease: "easeOut" }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
                     />
                     {/* Bottom curved line */}
                     <motion.path
-                        d="M0 100 Q 30 100 50 150 Q 70 200 80 200"
+                        d="M0 100 Q 8 100 12 150 Q 14 200 16 200"
                         stroke="rgba(255, 255, 255, 0.2)"
-                        strokeWidth="1.5"
+                        strokeWidth="0.75"
                         strokeLinecap="round"
                         fill="none"
                         initial={{ pathLength: 0, opacity: 0 }}
                         animate={{ pathLength: 1, opacity: 1 }}
                         exit={{ pathLength: 0, opacity: 0 }}
-                        transition={{ duration: 0.5, ease: "easeOut", delay: 0.05 }}
+                        transition={{ duration: 0.3, ease: "easeOut", delay: 0.05 }}
                     />
                 </svg>
 
@@ -424,8 +425,8 @@ function EnvelopePopup({ onClose }: { onClose: () => void }) {
                     {/* Header */}
                     <div className="flex items-center justify-between px-4 py-3 border-b border-white/5">
                         <div className="flex items-center gap-2">
-                            <Mail size={14} className="text-foreground/60" />
                             <span className="text-xs font-medium text-foreground/80">leave a note</span>
+                            <Star size={10} className="text-foreground/60 fill-current" />
                         </div>
                         <button
                             onClick={onClose}
@@ -446,7 +447,7 @@ function EnvelopePopup({ onClose }: { onClose: () => void }) {
                                 <div className="w-10 h-10 mx-auto mb-3 rounded-full bg-foreground/5 flex items-center justify-center">
                                     <Send className="w-4 h-4 text-foreground/60" />
                                 </div>
-                                <p className="text-xs text-foreground/70">note sent ✨</p>
+                                <p className="text-xs text-foreground/70 flex items-center gap-1">note sent <Star className="w-3 h-3 fill-current" /></p>
                             </motion.div>
                         ) : (
                             <form onSubmit={handleSubmit} className="space-y-3">
@@ -476,7 +477,7 @@ function EnvelopePopup({ onClose }: { onClose: () => void }) {
                                         required
                                         rows={3}
                                         className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/5 text-foreground/90 placeholder:text-foreground/30 focus:outline-none focus:border-white/15 transition-all text-xs resize-none"
-                                        placeholder="leave your thoughts here..."
+                                        placeholder="write here..."
                                     />
                                     <ValidationError
                                         prefix="Message"
@@ -502,7 +503,7 @@ function EnvelopePopup({ onClose }: { onClose: () => void }) {
                                         />
                                     ) : (
                                         <>
-                                            send ➜
+                                            send <Star className="w-3 h-3 fill-current" />
                                         </>
                                     )}
                                 </motion.button>

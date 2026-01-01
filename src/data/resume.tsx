@@ -9,7 +9,7 @@ export const DATA = {
     ".",
   summary:
     ".",
-  avatarUrl: "/me.jpeg",
+
 
   navbar: [
     { href: "/", icon: HomeIcon, label: "home" },
@@ -51,21 +51,83 @@ export const DATA = {
       tldr: <>worked to make a generalized kubernetes debugging tool more useful for <strong>5g telco setups</strong> using a rag designed on telco-specific specs fed into deepseek llm.</>,
     },
   ],
-  projects: [] as {
-    title: string;
-    href: string;
-    dates: string;
-    active: boolean;
-    description: string;
-    technologies: string[];
-    links: {
-      type: string;
-      href: string;
-      icon: any;
-    }[];
-    image?: string;
-    video?: string;
-  }[],
+  projects: [
+    {
+      title: "k8sgpt-telco-rag",
+      href: "https://github.com/aarsh1a/k8sgpt-telco-rag",
+      dates: "may 2025 - august 2025",
+      active: true,
+      description: "k8sgpt is designed to work across generic kubernetes clusters. i focused on making it more useful for 5g telco setups by teaching it to reason using telco-specific specs through a rag-based approach.",
+      technologies: ["python", "javascript", "langchain", "kubernetes", "k8sgpt", "gcp", "chromadb", "deepseek", "react", "tailwindcss", "nextjs", "supabase"],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/aarsh1a/k8sgpt-telco-rag",
+          icon: Icons.github,
+        },
+      ],
+    },
+    {
+      title: "earthRAG",
+      href: "https://github.com/aarsh1a/earthRAG",
+      dates: "dec 2025 - present",
+      active: true,
+      description: "i’m researching the use of a retrieval-augmented generation (rag) model for natural language querying of earth observation data. the goal is to make satellite imagery more accessible and explainable using llms. this project is for my spaice 2026 short paper submission.",
+      technologies: ["python", "pytorch", "huggingface transformers", "faiss", "llama or mistral (llm)", "terraMind (eo vision encoder)", "sentinel-2 satellite data", "openstreetmap", "wikipedia api", "noaa/climate datasets", "vector databases", "retrieval-augmented generation (rag)", "google earth engine (optional)", "pandas", "scikit-learn"],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/aarsh1a/earthRAG",
+          icon: Icons.github,
+        },
+      ],
+    },
+    {
+      title: "pinterest-mac-app",
+      href: "https://github.com/aarsh1a/pinterest-mac-app",
+      dates: "nov 2025",
+      active: true,
+      description: "created a desktop mac app for pinterest purely out of my own need for it.",
+      technologies: ["electron", "node.js", "javascript", "html", "css", "macos app packaging", "chromium engine"],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/aarsh1a/pinterest-mac-app",
+          icon: Icons.github,
+        },
+      ],
+    },
+    {
+      title: "skinly",
+      href: "https://github.com/aarsh1a/skinly",
+      dates: "nov 2025 - present",
+      active: true,
+      description: "skinly is an ai powered user-first skincare analysis tool i built to break down product ingredients, check compatibility, and flag potential skin concerns.",
+      technologies: ["python", "fastapi", "javascript", "electron", "framer motion", "llm integration", "nlp", "ocr", "api integration", "rule - based systems", "data validation"],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/aarsh1a/skinly",
+          icon: Icons.github,
+        },
+      ],
+    },
+    {
+      title: "blackhole - visual",
+      href: "https://github.com/aarsh1a/blackhole-visual",
+      dates: "nov 2025 - present",
+      active: true,
+      description: "a simple interactive blackhole visualization to uderstand spacetime distortion and experience it - based on nasa released blackhole video",
+      technologies: ["javascript", "webgl", "three.js", "glsl", "html", "css", "shader programming", "mathematical modeling", "real-time rendering"],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/aarsh1a/blackhole-visual",
+          icon: Icons.github,
+        },
+      ],
+    },
+  ],
   research: {
     published: [
       {
