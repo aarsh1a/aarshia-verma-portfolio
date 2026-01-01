@@ -8,6 +8,7 @@ import type { Metadata } from "next";
 import { Merriweather, Inter } from "next/font/google";
 import "./globals.css";
 import "leaflet/dist/leaflet.css";
+import { Analytics } from "@vercel/analytics/react";
 
 const fontSerif = Merriweather({
   weight: ["400", "700"],
@@ -85,6 +86,7 @@ export default function RootLayout({
             </div>
           </TooltipProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
