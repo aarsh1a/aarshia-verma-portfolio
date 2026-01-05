@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
   },
   verification: {
-    google: "",
+    google: "BRnNc4ecOWHMsYTNcSa5-kQGYoLck7DR4LZNW2Cl6I0",
     yandex: "",
   },
 };
