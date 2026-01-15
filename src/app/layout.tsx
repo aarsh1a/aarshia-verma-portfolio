@@ -35,6 +35,14 @@ export const metadata: Metadata = {
     siteName: `${DATA.name}`,
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 485,
+        height: 514,
+        alt: "aarshia verma",
+      },
+    ],
   },
   robots: {
     index: true,
